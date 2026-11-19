@@ -1,5 +1,11 @@
 
 # NEXORA FAQ Accordion
+An interactive and responsive FAQ component built using HTML, CSS and Vanilla JavaScript.
+
+## 🌐 Live Demo
+
+https://virenderks.github.io/nexora-faq-accordion/
+
 
 ## Project Overview
 
