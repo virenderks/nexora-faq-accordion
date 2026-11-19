@@ -6,6 +6,10 @@ An interactive and responsive FAQ component built using HTML, CSS and Vanilla Ja
 
 https://virenderks.github.io/nexora-faq-accordion/
 
+## 💻 GitHub Repository
+
+[View Source Code] https://github.com/virenderks/nexora-faq-accordion.git
+
 
 ## Project Overview
 
