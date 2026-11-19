@@ -1,0 +1,395 @@
+
+/* ========================================
+   NEXORA FAQ ACCORDION
+   Main Stylesheet
+======================================== */
+
+
+/* 1. GLOBAL RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* 2. ROOT VARIABLES */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --heading-color: #172554;
+    --text-color: #475569;
+    --background-color: #f8fafc;
+    --card-color: #ffffff;
+    --border-color: #e2e8f0;
+
+    --transition-speed: 0.3s;
+}
+
+
+/* 3. BASE STYLES */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 4. REUSABLE CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* 5. HEADER */
+
+.site-header {
+    background-color: var(--card-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+}
+
+.logo {
+    color: var(--heading-color);
+    font-size: 25px;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+
+/* 6. FAQ SECTION */
+
+.faq-section {
+    flex: 1;
+    padding: 80px 0;
+}
+
+
+/* 7. FAQ HEADING */
+
+.faq-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.section-label {
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.faq-heading h1 {
+    color: var(--heading-color);
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+
+/* 8. ACCORDION CONTAINER */
+
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* 9. ACCORDION ITEMS */
+
+.accordion-item {
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+
+    transition:
+        border-color var(--transition-speed) ease,
+        box-shadow var(--transition-speed) ease;
+}
+
+
+/* Hover effect */
+
+.accordion-item:hover {
+    border-color: #bfdbfe;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.06);
+}
+
+
+/* 10. ACCORDION HEADING */
+
+.accordion-heading {
+    margin: 0;
+}
+
+
+/* 11. QUESTION BUTTON */
+
+.accordion-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 24px;
+
+    background-color: transparent;
+    border: none;
+
+    color: var(--heading-color);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        color var(--transition-speed) ease,
+        background-color var(--transition-speed) ease;
+}
+
+
+/* Question button hover */
+
+.accordion-trigger:hover {
+    color: var(--primary-color);
+    background-color: #f8fbff;
+}
+
+
+/* 12. ACCORDION PLUS ICON */
+
+.accordion-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eff6ff;
+    color: var(--primary-color);
+
+    font-size: 22px;
+    font-weight: 400;
+
+    transition:
+        transform var(--transition-speed) ease,
+        background-color var(--transition-speed) ease;
+}
+
+
+/* Rotate icon when accordion is open */
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+    transform: rotate(45deg);
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+/* 13. ANSWER PANEL */
+
+/*
+   By default, all answers are visible.
+   This provides a fallback if JavaScript
+   is unavailable.
+*/
+
+.accordion-panel {
+    max-height: none;
+    overflow: visible;
+    opacity: 1;
+}
+
+
+/*
+   When JavaScript is active, closed panels
+   are collapsed with a smooth transition.
+*/
+
+
+/* Closed answer panel */
+.js-enabled .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        max-height 0.35s ease,
+        opacity 0.25s ease,
+        visibility 0.35s ease;
+}
+
+/* Open answer panel */
+.js-enabled .accordion-item.is-open .accordion-panel {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+/* Hide closed answer panels from all users */
+.accordion-panel[hidden] {
+    display: none;
+}
+
+
+/* 14. ANSWER CONTENT */
+
+.accordion-content {
+    padding: 0 24px 22px;
+
+    color: var(--text-color);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* 15. FOOTER */
+
+.site-footer {
+    background-color: var(--heading-color);
+    color: #cbd5e1;
+    text-align: center;
+    padding: 22px 0;
+    font-size: 14px;
+}
+
+
+/* 16. KEYBOARD ACCESSIBILITY */
+
+.accordion-trigger:focus-visible,
+.logo:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: -3px;
+    border-radius: 6px;
+}
+
+
+/* 17. TABLET RESPONSIVENESS */
+
+@media (max-width: 768px) {
+
+    .faq-section {
+        padding: 60px 0;
+    }
+
+    .faq-heading h1 {
+        font-size: 32px;
+    }
+
+    .accordion-trigger {
+        padding: 20px;
+    }
+
+}
+
+
+/* 18. MOBILE RESPONSIVENESS */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .site-header {
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .faq-section {
+        padding: 45px 0;
+    }
+
+    .faq-heading {
+        margin-bottom: 30px;
+    }
+
+    .faq-heading h1 {
+        font-size: 27px;
+    }
+
+    .section-description {
+        font-size: 14px;
+    }
+
+    .accordion-trigger {
+        padding: 17px;
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .accordion-icon {
+        width: 25px;
+        height: 25px;
+        min-width: 25px;
+        font-size: 19px;
+    }
+
+    .accordion-content {
+        padding: 0 17px 18px;
+        font-size: 14px;
+    }
+
+    .site-footer {
+        font-size: 12px;
+    }
+
+}
+
+
+/* 19. REDUCED MOTION SUPPORT */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
